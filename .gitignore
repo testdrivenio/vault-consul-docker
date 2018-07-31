@@ -1,0 +1,6 @@
+vault/data/*
+!vault/data/.gitkeep
+vault/logs/*
+!vault/logs/.gitkeep
+consul/data/*
+!consul/data/.gitkeep
