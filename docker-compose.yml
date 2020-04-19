@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.7'
 
 services:
 
@@ -15,9 +15,20 @@ services:
       - ./vault/logs:/vault/logs
     environment:
       - VAULT_ADDR=http://127.0.0.1:8200
+      - VAULT_API_ADDR=http://127.0.0.1:8200
     command: server -config=/vault/config/vault-config.json
     cap_add:
       - IPC_LOCK
+    depends_on:
+      - consul
+ 
+  consul-worker:
+    build:
+      context: ./consul
+      dockerfile: Dockerfile
+    command: agent -server -join consul -config-file=/consul/config/config.json
+    volumes:
+      - ./consul/config/consul-config.json:/consul/config/config.json
     depends_on:
       - consul
 
@@ -31,13 +42,3 @@ services:
     volumes:
       - ./consul/config/consul-config.json:/consul/config/config.json
       - ./consul/data:/consul/data
-
-  consul-worker:
-    build:
-      context: ./consul
-      dockerfile: Dockerfile
-    command: agent -server -join consul -config-file=/consul/config/config.json
-    volumes:
-      - ./consul/config/consul-config.json:/consul/config/config.json
-    depends_on:
-      - consul
