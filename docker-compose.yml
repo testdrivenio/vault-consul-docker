@@ -9,6 +9,7 @@ services:
     ports:
       - 8200:8200
     volumes:
+      - ./vault/ssl-cert:/vault/ssl-cert
       - ./vault/config:/vault/config
       - ./vault/policies:/vault/policies
       - ./vault/data:/vault/data
