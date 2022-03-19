@@ -22,4 +22,4 @@ openssl x509 -req -days 365 -in certificat.csr -signkey certificat.key.lock -out
     $ docker-compose up -d --build
     ```
 
-1. You can now interact with both Vault and Consul. View the UIs at [http://localhost:8200/ui](http://localhost:8200/ui) and [http://localhost:8500/ui](http://localhost:8500/ui).
+1. You can now interact with both Vault and Consul. View the UIs at [https://localhost:8200/ui](http://localhost:8200/ui) and [http://localhost:8500/ui](https://localhost:8500/ui).
