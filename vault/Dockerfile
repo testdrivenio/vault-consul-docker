@@ -2,10 +2,10 @@
 FROM alpine:3.14
 
 # set vault version
-ENV VAULT_VERSION 1.8.2
+ENV VAULT_VERSION 1.11.0
 
 # create a new directory
-RUN mkdir /vault
+RUN mkdir /vault && mkdir /vault/ssl-cert
 
 # download dependencies
 RUN apk --no-cache add \
